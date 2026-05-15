@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For My Bestie ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #4b79a1, #283e51);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating Hearts */
+.hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  bottom: -50px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Main Card */
+.card {
+  position: relative;
+  z-index: 2;
+  width: min(94%, 1100px);
+  text-align: center;
+  padding: 80px 60px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 1.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3rem, 8vw, 6rem);
+  margin-bottom: 10px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  margin-bottom: 30px;
+}
+
+.message-box {
+  min-height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#message {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.9;
+  max-width: 900px;
+  margin: 0 auto;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: none;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.yes-btn {
+  background: #ffffff;
+  color: #ff2e74;
+}
+
+.no-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.final {
+  display: none;
+  margin-top: 25px;
+  animation: fadeIn 1s ease;
+}
+
+.final h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  margin-bottom: 10px;
+}
+
+.final p {
+  font-size: 1.2rem;
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  opacity: 0.9;
+  animation: confettiFall 4s linear forwards;
+  z-index: 5;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 95%; 
+    padding: 35px 20px;
+    margin: 20px auto
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="card">
+  <h1>To The One My Heart Chose ❤️</h1>
+  <p class="subtitle">From best friends to soulmates... this is the most important question of my life.</p>
+
+  <div class="message-box">
+    <div id="message"></div>
+  </div>
+
+  <div class="buttons" id="buttons">
+    <button class="yes-btn" onclick="sayYes()">Yes, Always 💖</button>
+    <button class="no-btn" onclick="moveNoButton(this)">No 🙈</button>
+  </div>
+
+  <div class="final" id="finalMessage">
+    <h2>You Just Made My Dreams Come True 💍❤️</h2>
+    <p>Thank you for saying yes. I promise to love you deeply, cherish you endlessly, and stand by your side through every moment of our forever. 🌹❤️</p>
+  </div>
+</div>
+
+<script>
+// Romantic Messages
+const messages = [
+  'Some people enter our lives and quietly change everything...', 
+  'You started as my closest friend, my safest place, my favorite hello...', 
+  'Without realizing it, my heart began choosing you every single day...', 
+  'Your smile feels like sunshine after the longest storm...', 
+  'Your laughter is the sweetest sound my soul has ever known...', 
+  'With you, ordinary moments become unforgettable memories...', 
+  'You are the calm in my chaos and the magic in my world...', 
+  'In your eyes, I see the home my heart has always searched for...', 
+  'If love had a name, it would sound exactly like yours...', 
+  'I do not want just a chapter with you...', 
+  'I want an entire lifetime of late-night talks, shared dreams, and endless laughter...', 
+  'I want to hold your hand through every sunrise and every storm...', 
+  'I want to choose you today, tomorrow, and forever...', 
+  'So here is my heart, completely and honestly yours...', 
+  'Will you let me turn our beautiful friendship into a beautiful forever?', 
+  'Will you be my love, my person, and my forever? ❤️💍'
+];
+
+let index = 0;
+const messageEl = document.getElementById('message');
+
+function showMessage() {
+  messageEl.style.opacity = 0;
+  messageEl.style.transform = 'translateY(15px)';
+
+  setTimeout(() => {
+    messageEl.textContent = messages[index];
+    messageEl.style.opacity = 1;
+    messageEl.style.transform = 'translateY(0)';
+    index = (index + 1) % messages.length;
+  }, 400);
+}
+
+showMessage();
+setInterval(showMessage, 3500);
+
+// Floating Hearts
+const heartsContainer = document.getElementById('hearts');
+
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerHTML = '❤️';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (15 + Math.random() * 35) + 'px';
+  heart.style.animationDuration = (5 + Math.random() * 6) + 's';
+  heartsContainer.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 11000);
+}
+
+setInterval(createHeart, 250);
+
+// Playful No Button
+function moveNoButton(button) {
+  alert('💔 You are going to break my heart... Please think again. 🥺❤️');
+
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 120 - 60;
+
+  button.style.transform = `translate(${x}px, ${y}px)`;
+  button.textContent = 'Please Don\'t 💔';
+}
+
+// Yes Button Action
+function sayYes() {
+  document.getElementById('buttons').style.display = 'none';
+  document.getElementById('finalMessage').style.display = 'block';
+  launchConfetti();
+}
+
+// Confetti Celebration
+function launchConfetti() {
+  const shapes = ['#', '❤', '✦', '✿', '★'];
+
+  for (let i = 0; i < 150; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti';
+    piece.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.fontSize = (8 + Math.random() * 20) + 'px';
+    piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+    document.body.appendChild(piece);
+
+    setTimeout(() => piece.remove(), 4000);
+  }
+}
+</script>
+
+</body>
+</html>
+
